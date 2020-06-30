@@ -3,5 +3,9 @@
     "routes": {
       "/**": "index.html"
     },
-    "https_only": true
+    "proxies": {
+      "/api/": {
+        "origin": "https://when-works.herokuapp.com/api"
+      }
+    }
 }
