@@ -2,5 +2,6 @@
     "root": "whenworks/build/",
     "routes": {
       "/**": "index.html"
-    }
+    },
+    "https_only": true
 }
