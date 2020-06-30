@@ -50,7 +50,8 @@ export default function Create(props) {
         };
 
         axios({
-            url: '/api/create',
+            // url: '/api/create',
+            url: '/create',
             method: 'POST',
             data: payload
         })
