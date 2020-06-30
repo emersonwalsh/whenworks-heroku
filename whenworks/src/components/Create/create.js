@@ -53,9 +53,9 @@ export default function Create(props) {
             url: '/api/create',
             method: 'POST',
             data: payload,
-            headers: {
-                'Content-Type': 'text/plain;charset=utf-8',
-            },
+            // headers: {
+            //     'Content-Type': 'text/plain;charset=utf-8',
+            // },
         })
             .then(() => {
                 console.log('Data has been sent to the server');
