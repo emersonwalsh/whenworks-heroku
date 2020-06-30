@@ -30,7 +30,7 @@ export default function TopBar() {
 
     return (
         <Container>
-            <Name onClick={goHome}>WhenWorks.io</Name>
+            <Name onClick={goHome}>WhenWorks</Name>
         </Container>
     );
     
