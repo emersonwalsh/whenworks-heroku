@@ -1,6 +1,16 @@
 {
     "root": "whenworks/build/",
     "routes": {
-      "/**": "index.html"
+        "/**": "index.html"
+    },
+    "proxies": {
+        "/api/": {
+            "origin": "https://when-works.herokuapp.com/"
+        }
+    },
+    "headers": {
+        "/**": {
+            "Access-Control-Allow-Origin": "*"
+        }
     }
 }

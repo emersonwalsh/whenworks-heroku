@@ -10,13 +10,6 @@ const PORT = process.env.PORT || 8080;
 
 // todo is cors necessary
 app.use(cors());
-const cors = require('cors');
-const corsOptions = {
-  origin: 'https://when-works.herokuapp.com/api/create',
-  optionsSuccessStatus: 200
-}
-app.use(cors(corsOptions));
-app.options('*', cors());
 
 // Add headers
 // app.use(function (req, res, next) {
