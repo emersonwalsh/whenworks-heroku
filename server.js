@@ -30,9 +30,9 @@ app.use('/api', routes);
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static('whenworks/build'));
 
-    app.get('/', function(req, res) {
-        res.sendFile('whenworks/build/index.html');
-    });
+    // app.get('/', function(req, res) {
+    //     res.sendFile('whenworks/build/index.html');
+    // });
 }
 
 app.listen(PORT, console.log(`Server is starting at ${PORT}`));
