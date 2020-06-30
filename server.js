@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 8080;
 app.use(cors());
 const cors = require('cors');
 const corsOptions = {
-  origin: 'https://when-works.herokuapp.com/api',
+  origin: 'https://when-works.herokuapp.com/api/create',
   optionsSuccessStatus: 200
 }
 app.use(cors(corsOptions));
