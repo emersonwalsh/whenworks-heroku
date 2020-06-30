@@ -5,7 +5,7 @@ const Event = require('../models/event-model');
 // Routes
 
 // GET all trips
-router.get('api/', (req, res) => {
+router.get('/api/', (req, res) => {
     Event.find({ })
         .then((data) => {
             console.log('Data: ', data);
@@ -18,14 +18,14 @@ router.get('api/', (req, res) => {
 });
 
 // GET trip by id
-router.route('api/:id').get((req, res) => {
+router.route('/api/:id').get((req, res) => {
     Event.findById(req.params.id)
         .then(event => res.json(event))
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
 // POST new trip
-router.post('api/create', (req, res) => {
+router.post('/api/create', (req, res) => {
     const data = req.body;
     const newEvent = new Event(data);
 
@@ -43,7 +43,7 @@ router.post('api/create', (req, res) => {
 });
 
 // Post new response to specific trip by id
-router.route('api/update/:id').post((req, res) => {
+router.route('/api/update/:id').post((req, res) => {
     Event.findById(req.params.id)
         .then(event => {
             event._id = req.body._id;
