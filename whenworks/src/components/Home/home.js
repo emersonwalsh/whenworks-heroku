@@ -13,7 +13,7 @@ export default function Home(props) {
     return (
         <header className="app-content">
             <h1 className="title">
-                WhenWorks.io
+                WhenWorks
             </h1>
             <p className="tagline">Find a date that works for everyone!</p>
             <Button
