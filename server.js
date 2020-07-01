@@ -3,13 +3,13 @@ const express = require('express');
 const mongoose = require('mongoose');
 const morgan = require('morgan');
 const path = require('path');
-const cors = require('cors');
+// const cors = require('cors');
 
 const app = express();
 const PORT = process.env.PORT || 8080;
 
-// todo is cors necessary
-app.use(cors());
+// todo is cors necessary (if not npm unistall)
+// app.use(cors());
 
 // Add headers
 // app.use(function (req, res, next) {

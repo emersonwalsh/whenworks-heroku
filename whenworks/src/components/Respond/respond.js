@@ -20,7 +20,12 @@ export default function Respond(props) {
     const selectedDates = [];
 
     const getEvent = () => {
-        axios.get('/api/' + id)
+        axios.get('/api/' + id, {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        })
             .then((response) => {
                 const data = response.data;
                 setEvent(data);
