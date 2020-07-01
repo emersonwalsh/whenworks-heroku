@@ -3,35 +3,9 @@ const express = require('express');
 const mongoose = require('mongoose');
 const morgan = require('morgan');
 const path = require('path');
-// const cors = require('cors');
 
 const app = express();
 const PORT = process.env.PORT || 8080;
-
-// todo is cors necessary (if not npm unistall)
-// app.use(cors());
-
-// Add headers
-// app.use(function (req, res, next) {
-
-//     // Website you wish to allow to connect
-//     res.setHeader('Access-Control-Allow-Origin', 'https://when-works.herokuapp.com/api');
-
-//     // Request methods you wish to allow
-//     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-
-//     // Request headers you wish to allow
-//     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-
-//     // // Set to true if you need the website to include cookies in the requests sent
-//     // // to the API (e.g. in case you use sessions)
-//     // res.setHeader('Access-Control-Allow-Credentials', true);
-
-//     // Pass to next layer of middleware
-//     next();
-// });
-
-
 
 const routes = require('./routes/api');
 
@@ -55,14 +29,6 @@ app.use('/api', routes);
 
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static('whenworks/build'));
-
-    app.get(/^\/(?!api).*/, (req, res) => { // don't serve api routes to react app
-        res.sendFile(path.join(__dirname, './whenworks/build/index.html'));
-    });
-
-    // app.get('/', function(req, res) {
-    //     res.sendFile('whenworks/build/index.html');
-    // });
 }
 
 app.listen(PORT, console.log(`Server is starting at ${PORT}`));
