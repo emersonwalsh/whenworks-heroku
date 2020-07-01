@@ -20,12 +20,7 @@ export default function Respond(props) {
     const selectedDates = [];
 
     const getEvent = () => {
-        axios.get('/api/' + id, {
-            // headers: {
-            //     'Accept': 'application/json',
-            //     'Content-Type': 'application/json'
-            // }
-        })
+        axios.get('/api/')
             .then((response) => {
                 const data = response.data;
                 setEvent(data);
@@ -57,7 +52,7 @@ export default function Respond(props) {
                 name: participantName,
                 selectedDates: selectedDates
             }
-        }
+        };
 
         axios.post('/api/update/' + id, result)
             .then(() => {

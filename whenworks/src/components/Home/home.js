@@ -15,7 +15,7 @@ export default function Home(props) {
             <h1 className="title">
                 WhenWorks
             </h1>
-            <p className="tagline">Find a date that works for everyone!</p>
+            <p className="tagline">Find a date that works for everyone!!</p>
             <Button
                 variant="contained"
                 color="primary"
