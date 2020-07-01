@@ -24,11 +24,12 @@ export default function Results(props) {
         if (!results) return null;
 
         return results.map((response, index) => (
-            <div key={index}>
-                <p>{response.name}: {response.selectedDates}</p>
-            </div>
+            <tr key={response.name}>
+                <td>{response.name}</td>
+                <td>{response.selectedDates}</td>
+            </tr>
         ));
-    }
+     }
 
     useEffect(() => {
         getEvent();
@@ -38,9 +39,14 @@ export default function Results(props) {
         <header className="app-content">
             <TopBar />
 
-            <h1>Results</h1>
-            <p>Trip Name: {result.eventName}</p>
-            {displayEventResults(result.results)}
+            <h1>{result.eventName}</h1>
+            <h2>Responses</h2>
+            <table id='results'>
+               <tbody>
+                  {displayEventResults(result.results)}
+               </tbody>
+            </table>
+
             {/* <p>Heatmap, Table (Date, # unavailable)</p>
             <p>Share Options</p> */}
 
