@@ -56,6 +56,10 @@ app.use('/api', routes);
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static('whenworks/build'));
 
+    app.get(/^\/(?!api).*/, (req, res) => { // don't serve api routes to react app
+        res.sendFile(path.join(__dirname, './whenworks/build/index.html'));
+    });
+
     // app.get('/', function(req, res) {
     //     res.sendFile('whenworks/build/index.html');
     // });

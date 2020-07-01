@@ -21,10 +21,10 @@ export default function Respond(props) {
 
     const getEvent = () => {
         axios.get('/api/' + id, {
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            }
+            // headers: {
+            //     'Accept': 'application/json',
+            //     'Content-Type': 'application/json'
+            // }
         })
             .then((response) => {
                 const data = response.data;
