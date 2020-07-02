@@ -1,29 +1,124 @@
 
+/* App Styling */
+.app {
+    color: black;
+    background-color: white;
+}
+
 .app-content {
-    position: absolute;
-    top: 48px;
+    position: relative;
+    top: 0;
     left: 0;
     right: 0;
     overflow: auto;
-    min-height: calc(100vh - 48px);
+}
+
+/* Top Bar Styling */
+.topbar__container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 48px;
+    width: 100%;
+    background-color: white;
+    z-index: 2;
+}
+
+.topbar__name {
+    float: left;
+    line-height: 50px;
+    font-size: 1.7em;
+    padding-left: 16px;
+    cursor: pointer;
+}
+
+.topbar__dates {
+    float: right;
+    line-height: 50px;
+    font-size: 1.2em;
+    padding-right: 16px;
+    opacity: 0.5;
+}
+
+/* Home Page Styling */
+.home__container {
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    color: black;
 }
 
-.title {
+.home__title {
     font-size: 30px;
     margin: 0;
 }
 
-.tagline {
+.home__tagline {
     font-size: 22px;
     padding: 15px 0 22px 0;
 }
 
+/* Create Page Styling */
+.create__container {
+    padding-top: 80px;
+    padding-bottom: 20px;
+    min-height: calc(100vh - 100px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
+.create__name {
+    width: 280px;
+}
+
+.create__calendar {
+    padding: 25px 0;
+}
+
+/* Respond Page Styling */
+.respond__container {
+    padding-top: 80px;
+    padding-bottom: 20px;
+    min-height: calc(100vh - 100px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.respond__name {
+    width: 280px;
+}
+
+.respond__calendar {
+    padding: 25px 0;
+}
+
+/* Results Page Styling */
+.results__container {
+    padding-top: 80px;
+    padding-bottom: 20px;
+    min-height: calc(100vh - 100px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.results__table {
+    width: 50%;
+    text-align: left;
+}
+
+.results__table__header {
+    font-weight: bold !important;
+}
+
+
+/* Calendar Styling */
+.Cal__Container__root {
+    box-shadow: 0px 3px 1px -1px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 1px 5px 0px rgba(0,0,0,0.12);
+}
 
 .Cal__Header__date {
     font-size: 20px;
@@ -32,4 +127,12 @@
 .Cal__Header__root {
     min-height: 82px !important;
     padding: 12px 20px !important;
+}
+
+
+/* Responsiveness */
+@media only screen and (max-width: 768px) {
+    .results__table  {
+        width: 85%;
+    }
 }

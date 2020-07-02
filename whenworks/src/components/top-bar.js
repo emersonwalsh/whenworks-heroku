@@ -1,37 +1,35 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import styled from 'styled-components';
 
-const Container = styled.div`
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 48px;
-    width: 100%;
-    background-color: white;
-    z-index: 2;
-`;
-// box-shadow: 0 3px 5px rgba(0,0,0,.09)    
-
-const Name = styled.div`
-    float: left;
-    line-height: 50px;
-    font-size: 1.7em;
-    padding-left: 16px;
-    cursor: pointer;
-`;
-
-export default function TopBar() {
+export default function TopBar(props) {
     const history = useHistory();
+    const name = props.name || 'WhenWorks';
+
+    let dates = '';
+    if (props.start && props.end) {
+        let startArr = props.start.split('-');
+        let endArr = props.end.split('-');
+        let sameYear = startArr[0] === endArr[0];
+
+        dates += startArr[1] + '/' + startArr[2];
+        if (!sameYear) {
+            dates += '/' + startArr[0];
+        }
+        dates += ' - ';
+        dates += endArr[1] + '/' + endArr[2];
+        if (!sameYear) {
+            dates += '/' + endArr[0];
+        }
+    }
 
     const goHome = (result) => {
         history.push('/');
     }
 
     return (
-        <Container>
-            <Name onClick={goHome}>WhenWorks</Name>
-        </Container>
+        <div className="topbar__container">
+            <div className="topbar__name" onClick={goHome}>{name}</div>
+            <div className="topbar__dates" >{dates}</div>
+        </div>
     );
-    
 }

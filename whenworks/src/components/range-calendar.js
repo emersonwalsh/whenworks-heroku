@@ -7,16 +7,21 @@ import { getCalendarWidth, getCalendarHeight } from './../util';
 
 
 export default function RangeCalendar(props) {
-    let startDate = new Date(props.startDate);
-    let endDate = new Date(props.endDate);
+    let selectedRange = null;
+    
+    // todo update calendar header text to say "Select a date range for the event"
+
+    if (props.startDate && props.endDate) {
+        selectedRange = {
+            start: new Date(props.startDate),
+            end: new Date(props.endDate)
+        };
+    }
     
 	return (
         <InfiniteCalendar
             Component={withRange(Calendar)}
-            selected={{
-                start: startDate,
-                end: endDate
-            }}
+            selected={selectedRange}
             width={getCalendarWidth()}
             height={getCalendarHeight()}
             onSelect={props.setRange}

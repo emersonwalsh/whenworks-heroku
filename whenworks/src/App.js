@@ -1,15 +1,16 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
+// Styling
 import './App.css';
 import 'react-infinite-calendar/styles.css';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
+// Components
 import HomePage from './components/Home/home';
 import CreatePage from './components/Create/create';
 import RespondPage from './components/Respond/respond';
 import ResultsPage from './components/Results/results';
-
-import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
 function App() {
     // Override default primary color
@@ -19,12 +20,12 @@ function App() {
 				main: '#448aff'
 			}
 		}
-	})
+	});
     
     return (
         <Router>
             <MuiThemeProvider theme={theme}>
-            <div>
+            <div className="app">
                 <Route path="/" exact component={HomePage} />
                 <Route path="/create" component={CreatePage} />
                 <Route path="/respond/:id" component={RespondPage} />

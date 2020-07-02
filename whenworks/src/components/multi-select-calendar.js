@@ -8,8 +8,14 @@ import { getCalendarWidth, getCalendarHeight } from './../util';
 
 
 export default function MultiSelectCalendar(props) {
-    const minDate = new Date(props.minDate) || new Date();
-    const maxDate = new Date(props.maxDate) || new Date();
+    let minDate = new Date(props.minDate) || new Date();
+    let maxDate = new Date(props.maxDate) || new Date();
+
+    // todo need a differnet method... this wont always work
+
+    var userTimezoneOffset = minDate.getTimezoneOffset() * 60000;
+    minDate = new Date(minDate.getTime() + userTimezoneOffset);
+    maxDate = new Date(maxDate.getTime() + userTimezoneOffset);
 
     const minYear = minDate.getFullYear();
     const minMonth = minDate.getMonth();
@@ -19,7 +25,7 @@ export default function MultiSelectCalendar(props) {
     const maxMonth = maxDate.getMonth();
     const maxMonthDate = new Date(maxYear, maxMonth, 1);
 
-    // todo update calendar header text to say "Select unavailable days"
+    // todo update calendar header text to say "Select days that work for you"
 
     console.log('minDate', minDate)
     console.log('maxDate', maxDate)

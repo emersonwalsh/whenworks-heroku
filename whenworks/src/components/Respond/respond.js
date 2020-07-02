@@ -1,16 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
+import axios from 'axios';
+import { formatDate } from './../../util';
+
 import TopBar from './../top-bar';
 import MultiSelectCalendar from './../multi-select-calendar';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import styled from 'styled-components';
-import { formatDate } from './../../util';
-import axios from 'axios';
-
-const CalendarContainer = styled.div`
-    padding: 20px 0;
-`;
 
 export default function Respond(props) {
     const [event, setEvent] = useState({});
@@ -46,6 +42,10 @@ export default function Respond(props) {
     };
 
     const submitResponse = () => {
+        selectedDates.sort(function(a,b){
+            return new Date(a) - new Date(b);
+        });
+
         const result = {
             ...event,
             participantResponse: {
@@ -69,33 +69,37 @@ export default function Respond(props) {
     }, []);
 
     return (
-        <header className="app-content">
-            <TopBar /> 
-            {event.eventName} ({event.start} - {event.end})
-            <TextField
-                id="participant-name"
-                label="Your Name"
-                onChange={handleParticipantNameChange} 
-                variant="outlined"
-                color="primary" />
+        <div>
+            <TopBar name={event.eventName} start={event.start} end={event.end} /> 
+            <div className="app-content">
+                <div className="respond__container">
+                    <TextField
+                        id="participant-name"
+                        label="Your Name"
+                        onChange={handleParticipantNameChange} 
+                        variant="outlined"
+                        color="primary"
+                        className="respond__name"
 
-            <CalendarContainer>
-                <MultiSelectCalendar
-                    addDate={updateSelection}
-                    minDate={event.start}
-                    maxDate={event.end}
-                />
-            </CalendarContainer>
+                    />
+                    <div className="respond__calendar">
+                        <MultiSelectCalendar
+                            addDate={updateSelection}
+                            minDate={event.start}
+                            maxDate={event.end}
+                        />
+                    </div>
 
-            <Button
-                variant="contained"
-                color="primary"
-                size="large"
-                onClick={submitResponse}
-            // onClick={() => history.push('/respond')}
-            >
-                Submit
-            </Button>
-        </header>
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        size="large"
+                        onClick={submitResponse}
+                    >
+                        Submit
+                    </Button>
+                </div>
+            </div>
+        </div>
     );
 }
