@@ -19,7 +19,13 @@ function App() {
 			primary: {
 				main: '#448aff'
 			}
-		}
+        },
+        typography: {
+            fontFamily: [
+                '"Raleway"',
+                'sans-serif',
+            ].join(','),
+        }
 	});
     
     return (

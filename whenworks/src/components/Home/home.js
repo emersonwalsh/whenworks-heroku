@@ -14,7 +14,7 @@ export default function Home(props) {
                 <h1 className="home__title">
                     WhenWorks
                 </h1>
-                <p className="home__tagline">Find a date that works for everyone!</p>
+                <p className="home__tagline">Easily find a date that works for everyone!</p>
                 <Button
                     variant="contained"
                     color="primary"
@@ -22,7 +22,7 @@ export default function Home(props) {
                     endIcon={<AddIcon />}
                     onClick={() => history.push('/create')}
                 >
-                    Create an Event
+                    Create Event
                 </Button>
             </div>
         </div>
