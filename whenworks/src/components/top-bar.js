@@ -1,8 +1,20 @@
-import React from 'react';
-import { useHistory } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useHistory, useParams, useLocation } from 'react-router-dom';
+
+import Button from '@material-ui/core/Button';
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
+
+function Alert(props) {
+    return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
 
 export default function TopBar(props) {
+    const [open, setOpen] = useState(false);
+
     const history = useHistory();
+    let { id } = useParams();
+    let location = useLocation();
     const name = props.name || 'WhenWorks';
 
     let dates = '';
@@ -26,10 +38,87 @@ export default function TopBar(props) {
         history.push('/');
     }
 
+    const getCopyButtion = () => {
+        if (location.pathname.indexOf('respond') > -1 || location.pathname.indexOf('results') > -1) {
+            return (
+                <Button 
+                    color="primary" 
+                    onClick={showCopyConfirmation}>
+                    Copy Link
+                </Button>
+            );
+        }
+
+        return null;
+    }
+
+    const getActionButtion = () => {
+        if (location.pathname.indexOf('respond') > -1) {
+            return (
+                <Button 
+                    variant="outlined" 
+                    color="primary"
+                    onClick={() => {
+                        history.push('/results/' + id);
+                    }}>
+                    Go to Results
+                </Button>
+            );
+        } else if (location.pathname.indexOf('results') > -1) {
+            return (
+                <Button 
+                    variant="outlined" 
+                    color="primary"
+                    onClick={() => {
+                        history.push('/respond/' + id);
+                    }}>
+                    Add a Response
+                </Button>
+            );
+        }
+        return null;
+    }
+
+    const showCopyConfirmation = () => {
+        var dummy = document.createElement("textarea");
+        document.body.appendChild(dummy);
+        dummy.value = window.location.href;
+        dummy.select();
+        document.execCommand("copy");
+        document.body.removeChild(dummy);
+        setOpen(true);
+    };
+
+    const closeCopyConfirmation = (event, reason) => {
+        if (reason === 'clickaway') {
+          return;
+        }
+    
+        setOpen(false);
+    };
+
     return (
         <div className="topbar__container">
             <div className="topbar__name" onClick={goHome}>{name}</div>
             <div className="topbar__dates" >{dates}</div>
+            <div className="topbar__copy" >
+                {getCopyButtion()}
+            </div>
+            <div className="topbar__goto">
+                {getActionButtion()}
+            </div>
+            <Snackbar 
+                open={open} 
+                autoHideDuration={2500}
+                anchorOrigin={{
+                    vertical: 'bottom',
+                    horizontal: 'right',
+                }}
+                onClose={closeCopyConfirmation}>
+                <Alert onClose={closeCopyConfirmation} severity="success">
+                    Link copied to clipboard!
+                </Alert>
+            </Snackbar>
         </div>
     );
 }

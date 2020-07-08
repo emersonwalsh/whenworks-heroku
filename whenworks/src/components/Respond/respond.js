@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import axios from 'axios';
-import { formatDate } from './../../util';
+import { formatDate, updateDocumentTitle } from './../../util';
 
 import TopBar from './../top-bar';
 import MultiSelectCalendar from './../multi-select-calendar';
@@ -20,7 +20,7 @@ export default function Respond(props) {
             .then((response) => {
                 const data = response.data;
                 setEvent(data);
-                console.log('Successfully retrieved events', data);
+                updateDocumentTitle('WhenWorks: ' + data.eventName);
             })
             .catch(() => {
                 console.log('error retrieving events')
@@ -35,6 +35,12 @@ export default function Respond(props) {
         } else {
             selectedDates.splice(newDateIdx, 1);
         }
+
+        // todo calendar header text resets if none are selected
+        // if (selectedDates.length < 1) {
+        //     // todo this needs to be called after render
+        //     updateCalendarHeaderText('Select days that work for you...');
+        // }
     };
 
     const handleParticipantNameChange = event => {
@@ -80,7 +86,6 @@ export default function Respond(props) {
                         variant="outlined"
                         color="primary"
                         className="respond__name"
-
                     />
                     <div className="respond__calendar">
                         <MultiSelectCalendar

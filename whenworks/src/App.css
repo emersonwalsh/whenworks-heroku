@@ -21,25 +21,39 @@
     height: 48px;
     width: 100%;
     background-color: white;
+    display: flex;
+    flex-direction: row;
     z-index: 2;
 }
 
 .topbar__name {
-    float: left;
     line-height: 50px;
-    font-size: 1.7em;
+    font-size: 1.55em;
     padding-left: 16px;
     cursor: pointer;
     font-weight: 600;
 }
 
 .topbar__dates {
-    float: right;
     line-height: 50px;
-    font-size: 1.2em;
-    padding-right: 16px;
+    padding-left: 16px;
     opacity: 0.5;
 }
+
+.topbar__copy {
+    flex-grow: 2;
+    text-align: right;
+    line-height: 50px;
+    padding-right: 16px;
+}
+
+.topbar__goto {
+    line-height: 50px;
+    text-align: right;
+    padding-right: 16px;
+}
+
+
 
 /* Home Page Styling */
 .home__container {

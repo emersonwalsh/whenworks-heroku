@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import { updateDocumentTitle } from './../../util';
+
 import TopBar from './../top-bar';
 import ResultsTable from './results-table';
 
@@ -15,6 +17,7 @@ export default function Results(props) {
                 const data = response.data;
                 setResult(data);
                 console.log('Successfully retrieved events', data);
+                updateDocumentTitle('WhenWorks: ' + data.eventName);
             })
             .catch(() => {
                 console.log('error retrieving events')
@@ -31,23 +34,14 @@ export default function Results(props) {
             <div className="app-content">
                 <div className="results__container">
                     <h2>Results</h2>
-
-                    {/* Table Option */}
                     <ResultsTable data={result.results} start={result.start} end={result.end} />
-                    {/* <table id="results" className="results__table">
-                        <tbody>
-                            <tr className="results__table__header">
-                                <th>Response</th>
-                                <th>Available Dates</th>
-                            </tr>
-                            {displayEventResults(result.results)}
-                        </tbody>
-                    </table> */}
 
-                    {/* TODO add a way to toggle to response page
-                        <p>Heatmap, Table (Date, # unavailable)</p>
-                        <p>Share Options</p> 
+                    {/* 
+                        TODO add read only calendar that shows the dates that work for everyone
+                        TODO suggest display dates and date ranges 
+                        TODO add more share options
                     */}
+
                 </div>
             </div>
         </div>

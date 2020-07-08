@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useEffect }  from 'react';
 import InfiniteCalendar, {
     Calendar,
     defaultMultipleDateInterpolation,
     withMultipleDates
 } from 'react-infinite-calendar';
-import { getCalendarWidth, getCalendarHeight } from './../util';
+import { getCalendarWidth, getCalendarHeight, updateCalendarHeaderText } from './../util';
 
 
 export default function MultiSelectCalendar(props) {
@@ -25,7 +25,9 @@ export default function MultiSelectCalendar(props) {
     const maxMonth = maxDate.getMonth();
     const maxMonthDate = new Date(maxYear, maxMonth, 1);
 
-    // todo update calendar header text to say "Select days that work for you"
+    useEffect(() => {
+        updateCalendarHeaderText('Select days that work for you...');
+    });
 
     console.log('minDate', minDate)
     console.log('maxDate', maxDate)

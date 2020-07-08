@@ -1,12 +1,14 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-// Material UI
+
 import Button from '@material-ui/core/Button';
-// import 'fontsource-roboto'; if this is commented out, make sure to npm unistall
 import AddIcon from '@material-ui/icons/Add';
+import { updateDocumentTitle } from './../../util';
+
 
 export default function Home(props) {
     let history = useHistory();
+    updateDocumentTitle('WhenWorks');
 
     return (
         <div className="app-content">

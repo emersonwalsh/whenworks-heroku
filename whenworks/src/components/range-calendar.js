@@ -1,15 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import InfiniteCalendar, {
     Calendar,
     withRange
   } from 'react-infinite-calendar';
-import { getCalendarWidth, getCalendarHeight } from './../util';
+import { getCalendarWidth, getCalendarHeight, updateCalendarHeaderText } from './../util';
 
 
 export default function RangeCalendar(props) {
     let selectedRange = null;
-    
-    // todo update calendar header text to say "Select a date range for the event"
+
+    useEffect(() => {
+        updateCalendarHeaderText('Select a date range for your event...');
+    });
 
     if (props.startDate && props.endDate) {
         selectedRange = {

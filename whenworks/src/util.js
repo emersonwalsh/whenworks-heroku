@@ -16,7 +16,7 @@ export function getCalendarHeight() {
 }
 
 function pad(number, length) {
-    var str = '' + number;
+    let str = '' + number;
     while (str.length < length) {
         str = '0' + str;
     }
@@ -34,4 +34,16 @@ export function formatDate(date) {
         // + ' ' + pad(date.getHours(), 2)
         // + ':' + pad(date.getMinutes(), 2)
         // + ':' + pad(date.getSeconds(), 2);
+}
+
+export function updateDocumentTitle(text) {
+    if (text) {
+        document.title = text;
+    }
+}
+
+export function updateCalendarHeaderText(text) {
+    if (text) {
+        document.querySelector('.Cal__Header__wrapper').innerText = text;
+    }
 }
