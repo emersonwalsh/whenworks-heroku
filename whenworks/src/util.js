@@ -39,6 +39,12 @@ export function formatDate(date) {
 export function updateDocumentTitle(text) {
     if (text) {
         document.title = text;
+
+        // todo update og meta tags? why is title not showing up in text...
+        // let ogTitleEle = document.querySelector('meta[property="og:title"]');
+        // if (ogTitleEle) {
+        //     ogTitleEle.setAttribute("content", text);
+        // }
     }
 }
 

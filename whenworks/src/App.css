@@ -32,25 +32,33 @@
     padding-left: 16px;
     cursor: pointer;
     font-weight: 600;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .topbar__dates {
     line-height: 50px;
-    padding-left: 16px;
+    padding-left: 8px;
     opacity: 0.5;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .topbar__copy {
     flex-grow: 2;
     text-align: right;
     line-height: 50px;
-    padding-right: 16px;
+    padding-right: 4px;
+    min-width: 90px;
 }
 
 .topbar__goto {
     line-height: 50px;
     text-align: right;
     padding-right: 16px;
+    min-width: 152px;
 }
 
 
@@ -72,8 +80,9 @@
 
 .home__tagline {
     font-size: 22px;
-    padding: 15px 0 22px 0;
+    padding: 20px 16px 32px 16px;
     font-weight: 400;
+    text-align: center;
 }
 
 /* Create Page Styling */
@@ -150,6 +159,22 @@
 
 /* Responsiveness */
 @media only screen and (max-width: 768px) {
+    .topbar__name {
+        font-size: 18px;
+    }
+
+    .topbar__dates {
+        display: none;
+    }
+
+    .topbar__copy {
+        font-size: 12px;
+    }
+
+    .topbar__goto {
+        font-size: 12px;
+    }
+
     .results__table  {
         width: 85%;
     }

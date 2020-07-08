@@ -41,11 +41,13 @@ export default function TopBar(props) {
     const getCopyButtion = () => {
         if (location.pathname.indexOf('respond') > -1 || location.pathname.indexOf('results') > -1) {
             return (
-                <Button 
-                    color="primary" 
-                    onClick={showCopyConfirmation}>
-                    Copy Link
-                </Button>
+                <div className="topbar__copy" >
+                    <Button 
+                        color="primary" 
+                        onClick={showCopyConfirmation}>
+                        Copy Link
+                    </Button>
+                </div>
             );
         }
 
@@ -55,25 +57,29 @@ export default function TopBar(props) {
     const getActionButtion = () => {
         if (location.pathname.indexOf('respond') > -1) {
             return (
-                <Button 
-                    variant="outlined" 
-                    color="primary"
-                    onClick={() => {
-                        history.push('/results/' + id);
-                    }}>
-                    Go to Results
-                </Button>
+                <div className="topbar__goto">
+                    <Button 
+                        variant="outlined" 
+                        color="primary"
+                        onClick={() => {
+                            history.push('/results/' + id);
+                        }}>
+                        Go to Results
+                    </Button>
+                </div>
             );
         } else if (location.pathname.indexOf('results') > -1) {
             return (
-                <Button 
-                    variant="outlined" 
-                    color="primary"
-                    onClick={() => {
-                        history.push('/respond/' + id);
-                    }}>
-                    Add a Response
-                </Button>
+                <div className="topbar__goto">
+                    <Button 
+                        variant="outlined" 
+                        color="primary"
+                        onClick={() => {
+                            history.push('/respond/' + id);
+                        }}>
+                        Add a Response
+                    </Button>
+                </div>
             );
         }
         return null;
@@ -101,12 +107,8 @@ export default function TopBar(props) {
         <div className="topbar__container">
             <div className="topbar__name" onClick={goHome}>{name}</div>
             <div className="topbar__dates" >{dates}</div>
-            <div className="topbar__copy" >
-                {getCopyButtion()}
-            </div>
-            <div className="topbar__goto">
-                {getActionButtion()}
-            </div>
+            {getCopyButtion()}
+            {getActionButtion()}
             <Snackbar 
                 open={open} 
                 autoHideDuration={2500}

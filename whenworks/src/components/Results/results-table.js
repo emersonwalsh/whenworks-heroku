@@ -29,6 +29,20 @@ export default function ResultsTable(props) {
     const displayEventResults = (rows) => {
         if (!rows) return null;
 
+        if (rows.length === 0) {
+            return (
+                <TableRow>
+                    <TableCell align="center" colSpan={2}>
+                        There are no responses yet... 
+                        <br />
+                        Add a response!
+                    </TableCell>
+                </TableRow>
+
+                // <p class="results__table__placeholder">There are no responses yet... Add a response!</p>
+            )
+        }
+
         return rows.map((row, index) => (
             <TableRow key={row.name}>
                 <TableCell component="th" scope="row">
@@ -42,7 +56,7 @@ export default function ResultsTable(props) {
     return (
         <div className="results__table">
         <TableContainer component={Paper}>
-            <Table aria-label="simple table">
+            <Table aria-label="event results table">
                 <TableHead>
                     <TableRow>
                         <TableCell className="results__table__header">Name</TableCell>
