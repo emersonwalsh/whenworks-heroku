@@ -11,8 +11,10 @@ export function getCalendarWidth() {
 
 export function getCalendarHeight() {
     const windowHeight = window.innerHeight;
-    const fullScreenHeight = windowHeight - 150 - 80 - 56 - 20 - 42 - 20 - 30 - 20;
-    return fullScreenHeight < 250 ? 250 : fullScreenHeight;
+    // const fullScreenHeight = windowHeight - 150 - 80 - 56 - 20 - 42 - 20 - 30 - 20;
+    const fullScreenHeight = windowHeight - 100 - 56 - 50 - 82 - 42 - 20 - 30;
+
+    return fullScreenHeight < 240 ? 240 : fullScreenHeight;
 }
 
 function pad(number, length) {
