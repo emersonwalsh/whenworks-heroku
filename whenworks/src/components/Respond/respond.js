@@ -86,6 +86,9 @@ export default function Respond(props) {
                         variant="outlined"
                         color="primary"
                         className="respond__name"
+                        size="small"
+                        // todo place focus on input on mount
+                        // autoFocus={true}
                     />
                     <div className="respond__calendar">
                         <MultiSelectCalendar
@@ -98,7 +101,7 @@ export default function Respond(props) {
                     <Button
                         variant="contained"
                         color="primary"
-                        size="large"
+                        size="medium"
                         onClick={submitResponse}
                     >
                         Submit

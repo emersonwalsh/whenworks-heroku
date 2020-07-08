@@ -43,7 +43,8 @@ export default function TopBar(props) {
             return (
                 <div className="topbar__copy" >
                     <Button 
-                        color="primary" 
+                        color="primary"
+                        size="medium"
                         onClick={showCopyConfirmation}>
                         Copy Link
                     </Button>
@@ -61,6 +62,7 @@ export default function TopBar(props) {
                     <Button 
                         variant="outlined" 
                         color="primary"
+                        size="medium"
                         onClick={() => {
                             history.push('/results/' + id);
                         }}>
@@ -74,6 +76,7 @@ export default function TopBar(props) {
                     <Button 
                         variant="outlined" 
                         color="primary"
+                        size="medium"
                         onClick={() => {
                             history.push('/respond/' + id);
                         }}>

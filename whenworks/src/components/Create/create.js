@@ -80,6 +80,9 @@ export default function Create(props) {
                         variant="outlined"
                         color="primary"
                         className="create__name"
+                        size="small"
+                        // todo place focus on input on mount
+                        // autoFocus={true}
                     />
                     <div className="create__calendar">
                         <RangeCalendar
@@ -91,7 +94,7 @@ export default function Create(props) {
                     <Button
                         variant="contained"
                         color="primary"
-                        size="large"
+                        size="medium"
                         onClick={generateEvent}
                     >
                         Create
