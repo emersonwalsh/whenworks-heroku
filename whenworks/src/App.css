@@ -65,7 +65,7 @@
 
 /* Home Page Styling */
 .home__container {
-    min-height: 100vh;
+    padding-top: 28vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -80,9 +80,18 @@
 
 .home__tagline {
     font-size: 22px;
-    padding: 20px 16px 32px 16px;
+    padding: 5vh 16px 5vh 16px;
     font-weight: 400;
     text-align: center;
+    margin: 0;
+}
+
+.home__create {
+    padding-top: 8px;
+}
+
+.home__link {
+    padding-top: 2.5vh;
 }
 
 /* Create Page Styling */
