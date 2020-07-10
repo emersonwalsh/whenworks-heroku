@@ -73,21 +73,32 @@
 }
 
 .home__title {
-    font-size: 30px;
-    margin: 0;
+    display: inline-block
+}
+
+.home__title__text {
+    font-size: 36px;
+    line-height: 36px;
     font-weight: 600;
+    padding-left: 4px;
+    float: left;
+    margin: 0;
+
+}
+.home__title__logo {
+    float: left;
 }
 
 .home__tagline {
     font-size: 22px;
-    padding: 5vh 16px 5vh 16px;
+    padding: 6vh 16px 6vh 16px;
     font-weight: 400;
     text-align: center;
     margin: 0;
 }
 
 .home__create {
-    padding-top: 8px;
+    padding-top: 12px;
 }
 
 .home__link {
@@ -163,6 +174,10 @@
 .Cal__Header__root {
     min-height: 82px !important;
     padding: 12px 20px !important;
+}
+
+.Cal__Header__wrapper.Cal__Header__blank {
+    color: #FFFFFF !important;
 }
 
 
