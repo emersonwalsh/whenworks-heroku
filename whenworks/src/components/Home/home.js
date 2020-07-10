@@ -19,7 +19,7 @@ export default function Home(props) {
             <div className="home__container">
                 <div className="home__title">
                     <div className="home__title__logo">
-                        <EventAvailableIcon color="primary" style={{ fontSize: 36 }} />
+                        <EventAvailableIcon color="primary" />
                     </div>
                     <h1 className="home__title__text">WhenWorks</h1>
                 </div>

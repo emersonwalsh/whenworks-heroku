@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import axios from 'axios';
-import { formatDate, updateDocumentTitle } from './../../util';
+import { formatDate, updateDocumentTitle, formatDateRange } from './../../util';
 
 import TopBar from './../top-bar';
 import MultiSelectCalendar from './../multi-select-calendar';
@@ -19,6 +19,7 @@ export default function Respond(props) {
         axios.get('/api/' + id)
             .then((response) => {
                 const data = response.data;
+                data.dateRange = formatDateRange(data.start, data.end)
                 setEvent(data);
                 updateDocumentTitle('WhenWorks: ' + data.eventName);
             })
@@ -76,9 +77,11 @@ export default function Respond(props) {
 
     return (
         <div>
-            <TopBar name={event.eventName} start={event.start} end={event.end} /> 
+            <TopBar /> 
             <div className="app-content">
                 <div className="respond__container">
+                    <h3 className="respond__event__name">{event.eventName}</h3>
+                    <h4 className="respond__event__dates">{event.dateRange}</h4>
                     <TextField
                         id="participant-name"
                         label="Your Name"

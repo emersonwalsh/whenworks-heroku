@@ -25,7 +25,7 @@ export default function RangeCalendar(props) {
             Component={withRange(Calendar)}
             selected={selectedRange}
             width={getCalendarWidth()}
-            height={getCalendarHeight()}
+            height={getCalendarHeight('create')}
             onSelect={props.setRange}
         />
     );

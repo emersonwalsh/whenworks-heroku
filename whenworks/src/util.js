@@ -9,11 +9,17 @@ export function getCalendarWidth() {
     return 560;
 }
 
-export function getCalendarHeight() {
+export function getCalendarHeight(type) {
     const windowHeight = window.innerHeight;
-    // const fullScreenHeight = windowHeight - 150 - 80 - 56 - 20 - 42 - 20 - 30 - 20;
-    const fullScreenHeight = windowHeight - 100 - 56 - 50 - 82 - 42 - 20 - 30;
+    let fullScreenHeight = windowHeight;
 
+    if (type === 'create') {
+        fullScreenHeight = windowHeight - 48 - 30 - 40 - 25 - 82 - 49 - 25 - 36 - 20;
+
+    } else {
+        fullScreenHeight = windowHeight - 48 - 25 - 32 - 41 - 40 - 25 - 82 - 49 - 25 - 36 - 20;
+    }
+    
     return fullScreenHeight < 240 ? 240 : fullScreenHeight;
 }
 
@@ -54,4 +60,24 @@ export function updateCalendarHeaderText(text) {
     if (text) {
         document.querySelector('.Cal__Header__wrapper').innerText = text;
     }
+}
+
+export function formatDateRange(start, end) {
+    let dates = '';
+    if (start && end) {
+        let startArr = start.split('-');
+        let endArr = end.split('-');
+        let sameYear = startArr[0] === endArr[0];
+
+        dates += startArr[1] + '/' + startArr[2];
+        if (!sameYear) {
+            dates += '/' + startArr[0];
+        }
+        dates += ' - ';
+        dates += endArr[1] + '/' + endArr[2];
+        if (!sameYear) {
+            dates += '/' + endArr[0];
+        }
+    }
+    return dates;
 }

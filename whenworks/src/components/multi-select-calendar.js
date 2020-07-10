@@ -8,12 +8,17 @@ import { getCalendarWidth, getCalendarHeight, updateCalendarHeaderText } from '.
 
 
 export default function MultiSelectCalendar(props) {
+
+    console.log('dB dates: ' + props.minDate + ' - ' + props.maxDate)
     let minDate = new Date(props.minDate) || new Date();
     let maxDate = new Date(props.maxDate) || new Date();
 
+    console.log('JS dates:', minDate, maxDate);
+
+
     // todo need a differnet method... this wont always work
 
-    var userTimezoneOffset = minDate.getTimezoneOffset() * 60000;
+    const userTimezoneOffset = minDate.getTimezoneOffset() * 60000;
     minDate = new Date(minDate.getTime() + userTimezoneOffset);
     maxDate = new Date(maxDate.getTime() + userTimezoneOffset);
 
@@ -29,11 +34,6 @@ export default function MultiSelectCalendar(props) {
         updateCalendarHeaderText('Select days that work for you...');
     });
 
-    console.log('minDate', minDate)
-    console.log('maxDate', maxDate)
-    console.log('minMonthDate', minMonthDate)
-    console.log('maxMonthDate', maxMonthDate)
-
 	return (
         <InfiniteCalendar
             Component={withMultipleDates(Calendar)}
@@ -41,7 +41,7 @@ export default function MultiSelectCalendar(props) {
             onSelect={props.addDate}
             interpolateSelection={defaultMultipleDateInterpolation}
             width={getCalendarWidth()}
-            height={getCalendarHeight()}
+            height={getCalendarHeight('respond')}
             displayOptions={{
                 showTodayHelper: false
             }}

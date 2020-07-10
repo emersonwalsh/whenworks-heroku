@@ -4,38 +4,38 @@ import { useHistory, useParams, useLocation } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
+import EventAvailableIcon from '@material-ui/icons/EventAvailable';
 
 function Alert(props) {
     return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 
-export default function TopBar(props) {
+export default function TopBar() {
     const [open, setOpen] = useState(false);
 
     const history = useHistory();
     let { id } = useParams();
     let location = useLocation();
-    const name = props.name || 'WhenWorks';
-
-    let dates = '';
-    if (props.start && props.end) {
-        let startArr = props.start.split('-');
-        let endArr = props.end.split('-');
-        let sameYear = startArr[0] === endArr[0];
-
-        dates += startArr[1] + '/' + startArr[2];
-        if (!sameYear) {
-            dates += '/' + startArr[0];
-        }
-        dates += ' - ';
-        dates += endArr[1] + '/' + endArr[2];
-        if (!sameYear) {
-            dates += '/' + endArr[0];
-        }
-    }
 
     const goHome = (result) => {
         history.push('/');
+    }
+
+    const getResponsiveTitle = () => {
+        if (location.pathname.indexOf('create') > -1) {
+            return (
+                <div>
+                    <h1 className="topbar__title__text">WhenWorks</h1>
+                </div>
+            )
+        } else {
+            return (
+                <div>
+                <h1 className="topbar__title__text full-title">WhenWorks</h1>
+                <h1 className="topbar__title__text short-title">WW</h1>
+                </div>
+            )
+        }
     }
 
     const getCopyButtion = () => {
@@ -108,8 +108,12 @@ export default function TopBar(props) {
 
     return (
         <div className="topbar__container">
-            <div className="topbar__name" onClick={goHome}>{name}</div>
-            <div className="topbar__dates" >{dates}</div>
+            <div className="topbar__title" onClick={goHome}>
+                <div className="topbar__title__logo">
+                    <EventAvailableIcon color="primary" />
+                </div>
+                {getResponsiveTitle()}
+            </div>
             {getCopyButtion()}
             {getActionButtion()}
             <Snackbar 

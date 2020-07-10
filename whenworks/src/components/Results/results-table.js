@@ -55,19 +55,19 @@ export default function ResultsTable(props) {
 
     return (
         <div className="results__table">
-        <TableContainer component={Paper}>
-            <Table aria-label="event results table">
-                <TableHead>
-                    <TableRow>
-                        <TableCell className="results__table__header">Name</TableCell>
-                        <TableCell align="left" className="results__table__header">Available Dates</TableCell>
-                    </TableRow>
-                </TableHead>
-                <TableBody>
-                    {displayEventResults(props.data)}
-                </TableBody>
-            </Table>
-        </TableContainer>
+            <TableContainer component={Paper}>
+                <Table aria-label="event results table">
+                    <TableHead>
+                        <TableRow>
+                            <TableCell className="results__table__header">Name</TableCell>
+                            <TableCell align="left" className="results__table__header">Available Dates</TableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        {displayEventResults(props.data)}
+                    </TableBody>
+                </Table>
+            </TableContainer>
         </div>
     );
 }
