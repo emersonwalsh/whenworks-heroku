@@ -63,7 +63,8 @@ export default function Results(props) {
                     
                     if (index < avatarLimit) {
                         return (
-                            <Tooltip key={row.name} title={row.name} aria-label={row.name} placement="bottom">
+                            <Tooltip key={row.name} title={row.name} aria-label={row.name} placement="bottom"
+                            enterTouchDelay={100}>
                                 <Avatar>{row.name.charAt(0)}</Avatar>
                             </Tooltip>
                         )
