@@ -27,6 +27,7 @@ export default function RangeCalendar(props) {
             width={getCalendarWidth()}
             height={getCalendarHeight('create')}
             onSelect={props.setRange}
+            autoFocus={false}
         />
     );
 }

@@ -81,8 +81,7 @@ export default function Create(props) {
                         color="primary"
                         className="create__name"
                         size="small"
-                        // todo place focus on input on mount
-                        // autoFocus={true}
+                        autoFocus={true}
                     />
                     <div className="create__calendar">
                         <RangeCalendar

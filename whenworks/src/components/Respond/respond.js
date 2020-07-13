@@ -90,8 +90,7 @@ export default function Respond(props) {
                         color="primary"
                         className="respond__name"
                         size="small"
-                        // todo place focus on input on mount
-                        // autoFocus={true}
+                        autoFocus={true}
                     />
                     <div className="respond__calendar">
                         <MultiSelectCalendar

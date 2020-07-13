@@ -142,7 +142,6 @@
 .respond__container {
     padding-top: 25px;
     padding-bottom: 20px;
-    min-height: calc(100vh - 100px);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -181,7 +180,6 @@
 .results__container {
     padding-top: 25px;
     padding-bottom: 20px;
-    min-height: calc(100vh - 100px);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -208,8 +206,25 @@
     padding-bottom: 25px;
 }
 
+.results__controller {
+    display: flex;
+    flex-direction: row;
+    width: 70%;
+    padding-bottom: 25px; 
+
+}
+
+.results__avatars {
+    justify-content: flex-start;
+}
+
+.results__toggle {
+    justify-content: flex-end;
+    margin-left: auto;
+}
+
 .results__table {
-    width: 60%;
+    width: 70%;
     text-align: left;
 }
 
@@ -218,6 +233,9 @@
     font-weight: bold !important;
 }
 
+.results__read-only-calendar {
+    pointer-events: none;
+}
 
 /* Calendar Styling */
 .Cal__Container__root {
@@ -238,6 +256,9 @@
     color: #FFFFFF !important;
 }
 
+.Cal__Day__month {
+    font-weight: bold;
+}
 
 /* Responsiveness */
 @media only screen and (max-width: 768px) {
@@ -251,6 +272,21 @@
 
     .results__table  {
         width: 85%;
+    }
+
+    .results__controller {
+        flex-direction: column;
+    }
+    
+    .results__avatars {
+        justify-content: center;
+    }
+    
+    .results__toggle {
+        display: flex;
+        padding-top: 25px;
+        justify-content: center;
+        margin-left: 0;
     }
 }
 

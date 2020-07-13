@@ -81,3 +81,9 @@ export function formatDateRange(start, end) {
     }
     return dates;
 }
+
+export function ignoreTimezone(date) {
+    const dateWithTimezoneOffset = new Date(date) || new Date();
+    const userTimezoneOffset = dateWithTimezoneOffset.getTimezoneOffset() * 60000;
+    return new Date(dateWithTimezoneOffset.getTime() + userTimezoneOffset);
+}
